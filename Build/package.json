@@ -1,0 +1,28 @@
+{
+  "devDependencies": {
+    "del": "^3.0.0",
+    "fs-extra": "^7.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "http-server": "^0.11.1",
+    "md5": "^2.2.1",
+    "uglify-es": "^3.3.10",
+    "webpack": "^4.17.1",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
+  },
+  "scripts": {
+    "serve:dev": "hs src",
+    "serve:prod": "hs dist",
+    "build:dev": "node build.js",
+    "build:prod": "node build.js --prod",
+    "webpack:build:dev": "rimraf dist && webpack --mode development",
+    "webpack:build:prod": "rimraf dist && webpack --mode production",
+    "webpack:serve:dev": "webpack-dev-server --mode development"
+  },
+  "dependencies": {
+    "date-fns": "^2.0.0-alpha.16",
+    "minimist": "^1.2.0",
+    "moment": "^2.22.2",
+    "rimraf": "^2.6.2"
+  }
+}

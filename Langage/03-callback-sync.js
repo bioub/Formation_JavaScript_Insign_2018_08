@@ -20,4 +20,3 @@ console.log('Fin');
 // |filter       - map     - forEach   - log
 // +------------------------------------------------------> temps
 // output :                  4     16    Fin
-

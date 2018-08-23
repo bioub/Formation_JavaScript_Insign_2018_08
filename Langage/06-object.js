@@ -100,11 +100,21 @@ for (const key of keys) {
   console.log('value', coords1[key]);
 }
 
-// style ES8 (TODO Romain)
-for (const [key, value] in Object.entries(coords1)) {
+console.log('Object.entries(coords1)', Object.entries(coords1)); // [ , [ 'y', 20 ], [ 'z', 30 ] ]
+
+// style ES8
+for (const [key, value] of Object.entries(coords1)) {
   console.log('key', key); // x, y, z
   console.log('value', value);
 }
+
+// JSON sérialisation d'un objet
+// boolean, number, literaux (string (double quotes), array, object (sans type), regex)
+const json = JSON.stringify(coords1);
+console.log('json', json); // {"x":10,"y":20,"z":30}
+
+const coordsFromJson = JSON.parse(json);
+console.log('coordsFromJson.z', coordsFromJson.z); // 30
 
 // 2 - un objet multi-instances plus compliqués à créer
 //     sans méthodes et pas de besoin d'un nouveau Type
@@ -119,6 +129,8 @@ function coords3dFactory(x, y, z) {
     z: z,
   };
 }
+
+const coords3dFactoryES6 = (x, y, z = 0) => ({x, y, z});
 
 const coordsA = coords3dFactory(10, 20);
 console.log('coordsA.z', coordsA.z); // 0

@@ -1,31 +1,7 @@
 'use strict';
 
-const random = {
-  get() {
-    return Math.random();
-  },
-  getArbitrary(min, max) {
-    return Math.random() * (max - min) + min;
-  },
-  getInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min;
-  },
-  /**
-   * Retourne un nombre entier aléatoire entre min et max (inclus)
-   * @param min {number} Borne min
-   * @param max {number} Borne max
-   * @returns {number} Nombre entier aléatoire entre min et max (inclus)
-   */
-  getIntInclusive(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  },
-};
-
 const { createInterface } = require('readline');
+const { getIntInclusive: getRandomIntInc } = require('./random');
 
 class Jeu {
   /**
@@ -44,7 +20,7 @@ class Jeu {
     // const optionsWithDefault = Object.assign({}, {min: 0, max: 100}, options);
 
     this._rl = createInterface(process.stdin, process.stdout);
-    this._entierAlea = random.getIntInclusive(min, max);
+    this._entierAlea = getRandomIntInc(min, max);
     this._essais = [];
   }
 
@@ -81,7 +57,4 @@ class Jeu {
   }
 }
 
-const partie = new Jeu({
-  min: 10,
-});
-partie.jouer();
+module.exports = Jeu;
